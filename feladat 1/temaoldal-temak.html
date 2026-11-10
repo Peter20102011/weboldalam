@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Témaoldal témák</title>
+<style>
+:root{--bg:#f4f5fb;--lap:#fff;--szel:#d9dcec;--szoveg:#1e2140;--halv:#5d6180;--indigo:#3f3d9e;--indigo-h:#eceafd;--sarga-h:#fff6dc}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#14152a;--lap:#1e2040;--szel:#33365e;--szoveg:#eceefe;--halv:#a3a7c9;--indigo:#9b98f5;--indigo-h:#2a2b5a;--sarga-h:#3a3220}}
+:root[data-theme="dark"]{--bg:#14152a;--lap:#1e2040;--szel:#33365e;--szoveg:#eceefe;--halv:#a3a7c9;--indigo:#9b98f5;--indigo-h:#2a2b5a;--sarga-h:#3a3220}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--szoveg);font-family:'Segoe UI',system-ui,sans-serif;font-size:17px;line-height:1.5}
+main{max-width:980px;margin:0 auto;padding:16px}
+.lap{background:var(--lap);border:1px solid var(--szel);border-radius:14px;padding:20px;margin-bottom:16px}
+h1{font-size:26px;margin:0 0 4px}
+h2{font-size:20px;margin:0 0 12px;color:var(--indigo)}
+.al{color:var(--halv);margin:0}
+code{background:var(--indigo-h);color:var(--indigo);padding:1px 6px;border-radius:5px;font-family:Consolas,monospace;font-size:15px}
+ol.lep{margin:0;padding-left:34px}
+ol.lep li{margin:6px 0}
+.figy{background:var(--sarga-h);border-radius:10px;padding:10px 14px;margin-top:12px}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{border:1px solid var(--szel);padding:6px 8px;text-align:left;vertical-align:top}
+th{background:var(--indigo-h)}
+td.sz{width:44px;text-align:center;font-weight:700}
+td.p{width:60px;text-align:center}
+.tabla-wrap{overflow-x:auto}
+.nyomtat{border:none;background:var(--indigo);color:#fff;padding:8px 16px;border-radius:8px;font-size:15px;cursor:pointer}
+@media print{
+  body{background:#fff;color:#000;font-size:13px}
+  .lap{border:none;padding:0;page-break-after:always}
+  .nyomtat{display:none}
+  th{background:#eee}
+  th,td{border-color:#999}
+  code{background:none;color:#000}
+}
+</style>
+</head>
+<body>
+<main>
+<section class="lap">
+  <h1>IKT projektmunka – Témaoldal: témák</h1>
+  <p class="al">A témád a naplóbeli sorszámod szerint van a listában.</p>
+  <p style="margin-top:12px"><button class="nyomtat" onclick="print()">Nyomtatás</button></p>
+</section>
+<section class="lap">
+  <h2>Témák</h2>
+  <div class="tabla-wrap">
+  <table>
+    <tr><th>#</th><th>Téma</th><th>A táblázat oszlopai</th><th>Rangsor: keresd meg…</th></tr>
+    <tbody id="temak"></tbody>
+  </table>
+  </div>
+  <p class="al" style="margin-top:8px">Ha két forrás kicsit eltér, bármelyik elfogadható.</p>
+</section>
+
+</main>
+<script>
+const TEMAK = [
+ ['Kutyafajták','fajta | méret | származási ország','a 3 legnagyobb kutyafajtát'],
+ ['Macskafélék (vadon élő)','állat | hol él | mit eszik','a 3 legnagyobb macskafélét'],
+ ['A Naprendszer bolygói','bolygó | hányadik a Naptól | van-e holdja','a 3 legnagyobb bolygót'],
+ ['Hangszerek','hangszer | csoport (húros, fúvós, ütős) | milyen zenében hallható','a 3 legnagyobb vonós hangszert'],
+ ['Gyors állatok','állat | legnagyobb sebessége | hol él','a 3 leggyorsabb szárazföldi állatot'],
+ ['A világ folyói','folyó | kontinens | hossz','a világ 3 leghosszabb folyóját'],
+ ['A világ tavai','tó | ország | édes vagy sós','a világ 3 legnagyobb tavát'],
+ ['Szigetek','sziget | ország | melyik óceánban van','a világ 3 legnagyobb szigetét'],
+ ['Pingvinek','pingvinfaj | hol él | magasság','a 3 legnagyobb pingvinfajt'],
+ ['Óceánok','óceán | terület | egy állat, ami ott él','a 3 legnagyobb óceánt'],
+ ['Kontinensek','kontinens | egy ország | egy jellemző állat','a 3 legnagyobb kontinenst'],
+ ['Magyar városok','város | vármegye | egy nevezetesség','a 3 legnépesebb magyar várost'],
+ ['Magas épületek','épület | város | magasság','a világ 3 legmagasabb épületét'],
+ ['A világ hegyei','hegy | ország | magasság','a világ 3 legmagasabb hegyét'],
+ ['Madarak','madár | színe | tud-e repülni','a 3 legnagyobb madarat'],
+ ['Sivatagok','sivatag | kontinens | forró vagy hideg','a világ 3 legnagyobb sivatagát'],
+ ['Vízesések','vízesés | ország | magasság','a világ 3 legmagasabb vízesését'],
+ ['Magyar hegységek','hegység | legmagasabb csúcsa | magasság','a 3 legmagasabb magyar hegycsúcsot'],
+ ['Európai országok','ország | főváros | pénznem','a 3 legnagyobb területű európai országot'],
+ ['A világ országai','ország | kontinens | főváros','a világ 3 legnépesebb országát'],
+ ['Holdak a Naprendszerben','hold | melyik bolygó holdja | átmérő','a Naprendszer 3 legnagyobb holdját'],
+ ['Magyar tavak','tó | vármegye | jellemző','a 3 legnagyobb magyar tavat'],
+ ['Európai fővárosok','főváros | ország | folyója','a 3 legnépesebb európai fővárost'],
+ ['Nagyvárosok a világon','város | ország | kontinens','a világ 3 legnépesebb városát'],
+ ['Magyar nemzeti parkok','nemzeti park | tájegység | egy védett állat vagy növény','a 3 legnagyobb területű magyar nemzeti parkot'],
+ ['Magyar vármegyék','vármegye | székhely | egy nevezetesség','a 3 legnagyobb területű vármegyét'],
+ ['Fák','fa | hol nő | lombhullató vagy örökzöld','a világ 3 legmagasabb fafaját'],
+ ['Csillagok','csillag | csillagkép | szín','a 3 legfényesebb csillagot az éjszakai égen'],
+ ['Az emberi csontváz','csont | hol van a testben | mi a feladata','az emberi test 3 leghosszabb csontját'],
+ ['Kémiai elemek','elem | vegyjel | halmazállapot szobahőmérsékleten','a földkéreg 3 leggyakoribb elemét'],
+ ['Nyári olimpiák','rendező város | ország | év','a 3 legutóbbi nyári olimpia városát'],
+ ['Hidak a világon','híd | ország | hossz','a világ 3 leghosszabb hídját'],
+ ['Ásványok és drágakövek','ásvány | szín | keménység','a 3 legkeményebb ásványt'],
+ ['Szárazföldi emlősök','emlős | kontinens | mit eszik','a 3 legnagyobb szárazföldi emlőst'],
+ ['Programozási nyelvek','nyelv | megalkotás éve | mire használják','a 3 legrégebbi, ma is használt programozási nyelvet'],
+];
+document.getElementById('temak').innerHTML = TEMAK.map((t,i)=>`<tr><td class="sz">${i+1}.</td><td>${t[0]}</td><td>${t[1]}</td><td>${t[2]}</td></tr>`).join('');
+</script>
+</body>
+</html>

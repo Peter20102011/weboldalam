@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Témaoldal feladat</title>
+<style>
+:root{--bg:#f4f5fb;--lap:#fff;--szel:#d9dcec;--szoveg:#1e2140;--halv:#5d6180;--indigo:#3f3d9e;--indigo-h:#eceafd;--sarga-h:#fff6dc}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#14152a;--lap:#1e2040;--szel:#33365e;--szoveg:#eceefe;--halv:#a3a7c9;--indigo:#9b98f5;--indigo-h:#2a2b5a;--sarga-h:#3a3220}}
+:root[data-theme="dark"]{--bg:#14152a;--lap:#1e2040;--szel:#33365e;--szoveg:#eceefe;--halv:#a3a7c9;--indigo:#9b98f5;--indigo-h:#2a2b5a;--sarga-h:#3a3220}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--szoveg);font-family:'Segoe UI',system-ui,sans-serif;font-size:17px;line-height:1.5}
+main{max-width:980px;margin:0 auto;padding:16px}
+.lap{background:var(--lap);border:1px solid var(--szel);border-radius:14px;padding:20px;margin-bottom:16px}
+h1{font-size:26px;margin:0 0 4px}
+h2{font-size:20px;margin:0 0 12px;color:var(--indigo)}
+.al{color:var(--halv);margin:0}
+code{background:var(--indigo-h);color:var(--indigo);padding:1px 6px;border-radius:5px;font-family:Consolas,monospace;font-size:15px}
+ol.lep{margin:0;padding-left:34px}
+ol.lep li{margin:6px 0}
+.figy{background:var(--sarga-h);border-radius:10px;padding:10px 14px;margin-top:12px}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{border:1px solid var(--szel);padding:6px 8px;text-align:left;vertical-align:top}
+th{background:var(--indigo-h)}
+td.sz{width:44px;text-align:center;font-weight:700}
+td.p{width:60px;text-align:center}
+.tabla-wrap{overflow-x:auto}
+.nyomtat{border:none;background:var(--indigo);color:#fff;padding:8px 16px;border-radius:8px;font-size:15px;cursor:pointer}
+@media print{
+  body{background:#fff;color:#000;font-size:13px}
+  .lap{border:none;padding:0;page-break-after:always}
+  .nyomtat{display:none}
+  th{background:#eee}
+  th,td{border-color:#999}
+  code{background:none;color:#000}
+}
+</style>
+</head>
+<body>
+<main>
+<section class="lap">
+  <h1>IKT projektmunka – számonkérés: Témaoldal</h1>
+  <p class="al">9. évfolyam · az eddig tanultak: HTML oldal, címsorok, bekezdés, kép, link, listák, táblázat, menü</p>
+  <p style="margin-top:12px"><button class="nyomtat" onclick="print()">Nyomtatás</button></p>
+</section>
+
+<section class="lap">
+  <h2>A feladat</h2>
+  <p>A saját weboldaladra készíts egy új oldalt a <b>témádról</b>. A témád a <b>naplóbeli sorszámod</b> szerint van a <b>Témák</b> listában.</p>
+  <ol class="lep">
+    <li>A saját weboldal mappádban hozz létre egy új fájlt <b>tema.html</b> néven!</li>
+    <li>Hozd létre az alap HTML szerkezetet!</li>
+    <li>Állítsd a nyelvet magyarra!</li>
+    <li>Csatold a css mappában lévő style.css-t!</li>
+    <li>A weboldal lapfülön megjelenő címe: Weboldalam</li>
+    <li>Készítsd el a navigációt! Ügyelj arra, hogy a többi oldaladról is elérhető legyen az új témaoldalad!</li>
+    <li>Főcímként írd ki a témád nevét!</li>
+    <li>Készíts öt alcímet ebben a sorrendben: Bemutatás, Érdekességek, Jellemzők, Adatok, Rangsor!</li>
+    <li>A Bemutatás alcím alá írj egy legalább 2 mondatos bekezdést, amelyben a saját szavaiddal bemutatod a témádat!</li>
+    <li>Az Érdekességek alcím alá írj egy bekezdést, amelyben legalább 2 érdekességet leírsz a témádról!</li>
+    <li>Tölts le a <b>pixabay.com</b> oldalról egy, a témáddal kapcsolatos vagy arra jellemző képet, ne a legnagyobb felbontásban! Mentsd az img mappába, és tedd be az oldalra, a Bemutatás bekezdése alá! Ha a kép nem jeleníthető meg, vagy ha fölé viszed az egeret, jelenjen meg a képre utaló szöveg!</li>
+    <li>Az Érdekességek bekezdése alá készíts egy hivatkozást <b>Tudj meg többet!</b> szöveggel egy olyan oldalra, ahol többet megtudhatunk a témádról! A hivatkozás új lapon nyíljon meg!</li>
+    <li>A Jellemzők alá készíts rendezetlen listát 3 dologról, ami jellemző a témádra! (Pl.: a ló: gyors, erős, tanulékony.)</li>
+    <li>Az Adatok alá készíts táblázatot: egy fejléc sor és 3 sor adat, a témádnál megadott oszlopokkal! A táblázatnak és minden cellájának legyen szegélye. Ehhez másold be a <b>css/style.css</b> fájlba ezt:<pre style="margin:6px 0 0;background:var(--indigo-h);color:var(--indigo);padding:8px 12px;border-radius:8px;font-family:Consolas,monospace;font-size:15px">table {
+  border-collapse: collapse;
+}
+th, td {
+  border: 1px solid black;
+  padding: 5px;
+}</pre></li>
+    <li>Nézz utána az interneten, mi a 3 „leg” a témádban! Hogy mit keress, azt a Témák listában, a témád sorában látod. Írd be őket a Rangsor alá rendezett listába, a legelsővel kezdve! (Pl.: a 3 legnagyobb lófajta: shire, belga hidegvérű, clydesdale.)</li>
+    <li>Mentsd el! A munkádat a Classroomban, a kiírt feladatnál add be, kétféleképpen teheted:<br>– Töltsd fel egyenként az összes fájlodat: index.html, keplink.html, listak.html, orarend.html, tema.html, style.css, a kollázs képed, a kedvenc gyümölcsöd képe és a témád képe!<br>– Vagy töltsd fel GitHubra az új oldalt, frissítsd a többi oldaladat is (a navigáció miatt), ne felejtsd el feltölteni a képet sem, és másold be a Classroomba a github.io-s webcímedet!<br>Ne felejtsd el leadni!</li>
+  </ol>
+  <div class="figy">Ellenőrizd a böngészőben: minden menüpont működik? A kép látszik?</div>
+</section>
+
+<section class="lap" id="minta">
+  <h2>Minta: így nézhet ki</h2>
+  <p class="al" style="margin-bottom:10px">A minta témája a Lovak, ez nincs a témák között. Rangsor: a 3 legnagyobb lófajta. A menü csak jelzés.</p>
+  <iframe title="Minta témaoldal" style="width:100%;height:1000px;border:1px solid var(--szel);border-radius:10px;background:#fff" srcdoc="
+<!DOCTYPE html><html lang='hu'><head><meta charset='UTF-8'><title>Weboldalam</title><style>table{border-collapse:collapse}th,td{border:1px solid black;padding:5px}</style></head><body>
+<p><a href='#'>Főoldal</a> | <a href='#'>Képlink</a> | <a href='#'>Listák</a> | <a href='#'>Órarend</a> | <a href='#'>Témám</a></p>
+<h1>Lovak</h1>
+<h2>Bemutatás</h2>
+<p>A ló növényevő háziállat. Az ember régóta használja munkára, közlekedésre és sportra.</p>
+<img src='data:image/jpeg;base64,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' alt='Barna ló a mezőn' title='Barna ló a mezőn' width='200' height='112'>
+<h2>Érdekességek</h2>
+<p>A ló állva is tud aludni. A csikó a születése után néhány órával már fut.</p>
+<p><a href='#'>Tudj meg többet!</a></p>
+<h2>Jellemzők</h2>
+<ul><li>gyors</li><li>erős</li><li>tanulékony</li></ul>
+<h2>Adatok</h2>
+<table><tr><th>fajta</th><th>jellemző szín</th><th>mire használják</th></tr>
+<tr><td>lipicai</td><td>fehér</td><td>díjlovaglás</td></tr>
+<tr><td>póni</td><td>barna</td><td>gyereklovaglás</td></tr>
+<tr><td>arab telivér</td><td>szürke</td><td>versenyzés</td></tr></table>
+<h2>Rangsor</h2>
+<ol><li>shire</li><li>belga hidegvérű</li><li>clydesdale</li></ol>
+</body></html>"></iframe>
+</section>
+</main>
+</body>
+</html>
